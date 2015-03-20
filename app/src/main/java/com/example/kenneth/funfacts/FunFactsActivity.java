@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 
 public class FunFactsActivity extends ActionBarActivity {
 
@@ -16,12 +18,31 @@ public class FunFactsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fun_facts);
         // Declare variables
-        TextView factLabel = (TextView) findViewById(R.id.FactsTextView);
+        final TextView factLabel = (TextView) findViewById(R.id.FactsTextView);
         Button showFactButton = (Button) findViewById(R.id.showFactsButton);
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+             String[] facts = {
+
+                             "The river Niger is the third largest river in Africa",
+                             "Nigeria has the largest no of butterfly species in the world",
+                             "Nigeria has the most number of twin births in the world",
+                             "7% of the worlds languages are spoken in Nigeria",
+                             "Nigeria is the 8th most populus country in the world",
+                             "Nigeria is the home of the first black Nobel Laureate",
+                             "Third Mainland bridge with a length of 11.8km is the longest bridge in Africa",
+                             "Nigeria is Africa's biggest economy"
+
+             };
+             String fact = "";
+                // randomly select a fact
+                Random randomGenerator = new Random();
+                int randomNumber = randomGenerator.nextInt(facts.length);
+                fact = facts[randomNumber];
+                //update label with our dynamic fact
+             factLabel.setText(fact);
             }
         };
         showFactButton.setOnClickListener(listener);
